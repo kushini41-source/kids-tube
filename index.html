@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="寶貝影片">
+  <meta name="theme-color" content="#14183a">
+  <title>寶貝影片</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main id="kid" class="kid" tabindex="-1">
+    <section class="stage">
+      <div class="screen" id="screen">
+        <div id="player" class="player"></div>
+        <div class="card" id="card" aria-hidden="true">
+          <img id="cardImg" alt="">
+          <span class="spinner"></span>
+        </div>
+        <!-- 擋住影片上的 YouTube 按鈕，點畫面只會暫停／播放 -->
+        <div class="shield" id="shield" hidden></div>
+        <!-- 第一次播放前：中間留一個洞讓小朋友點 YouTube 的播放鍵（iPad 規定要親手點） -->
+        <div class="hole-shield" id="holeShield" hidden>
+          <div class="blk blk-top"></div>
+          <div class="blk blk-bottom"></div>
+          <div class="blk blk-left"></div>
+          <div class="blk blk-right"></div>
+        </div>
+        <div class="start" id="start" hidden aria-hidden="true">
+          <span class="start-ball"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l10.5-6.5z"/></svg></span>
+          <span class="start-text">點一下開始</span>
+        </div>
+        <div class="paused" id="paused" hidden aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M8 5.5v13l10.5-6.5z"/></svg>
+        </div>
+        <div class="message" id="message" hidden></div>
+      </div>
+      <p class="now" id="now"></p>
+    </section>
+
+    <nav class="pad" aria-label="切換影片">
+      <button class="pad-btn arrow" id="prevBtn" aria-label="上一個">
+        <svg viewBox="0 0 24 24"><path d="M5 15.5l7-7 7 7"/></svg>
+      </button>
+      <button class="pad-btn play is-paused" id="playBtn" aria-label="播放或暫停">
+        <svg class="i-play" viewBox="0 0 24 24"><path d="M8 5.5v13l10.5-6.5z"/></svg>
+        <svg class="i-pause" viewBox="0 0 24 24"><path d="M7 5h3.5v14H7zM13.5 5H17v14h-3.5z"/></svg>
+      </button>
+      <button class="pad-btn arrow" id="nextBtn" aria-label="下一個">
+        <svg viewBox="0 0 24 24"><path d="M5 8.5l7 7 7-7"/></svg>
+      </button>
+    </nav>
+
+    <button class="parent-btn" id="parentBtn" aria-label="家長設定">
+      <svg viewBox="0 0 24 24"><path d="M7 10V8a5 5 0 0 1 10 0v2h1a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1v-9a1 1 0 0 1 1-1zm2 0h6V8a3 3 0 0 0-6 0z"/></svg>
+    </button>
+  </main>
+
+  <dialog id="lock" class="lock">
+    <form id="lockForm">
+      <h2>家長確認</h2>
+      <p>請回答：<b id="lockQ"></b></p>
+      <input id="lockA" inputmode="numeric" pattern="[0-9]*" autocomplete="off" aria-label="答案">
+      <p class="lock-err" id="lockErr" hidden>答錯了，再試一次</p>
+      <div class="row">
+        <button type="button" class="btn" id="lockCancel">取消</button>
+        <button type="submit" class="btn primary">進入設定</button>
+      </div>
+    </form>
+  </dialog>
+
+  <section class="parent" id="parent" hidden>
+    <header class="p-head">
+      <h1>家長設定</h1>
+      <div class="row">
+        <button class="btn" id="fullBtn">全螢幕播放</button>
+        <button class="btn primary" id="closeParent">回到播放</button>
+      </div>
+    </header>
+    <div class="p-body">
+      <div class="p-card">
+        <h2>目前狀態</h2>
+        <p class="muted" id="modeText"></p>
+        <button class="btn" id="refreshBtn">重新抓影片</button>
+      </div>
+
+      <div class="p-card" id="nowCard">
+        <h2>正在播放</h2>
+        <div class="now-row">
+          <img id="nowThumb" alt="">
+          <div>
+            <p class="r-title" id="nowTitle"></p>
+            <p class="r-meta" id="nowChannel"></p>
+          </div>
+        </div>
+        <button class="btn danger" id="blockNow">封鎖這部影片</button>
+      </div>
+
+      <div class="p-card">
+        <h2>搜尋並加入</h2>
+        <p class="muted">搜尋頻道或影片，也可以直接貼上 YouTube 網址。建議核准「頻道」，頻道裡的影片都會自動出現。</p>
+        <form id="searchForm" class="search">
+          <div class="seg" role="radiogroup" aria-label="搜尋類型">
+            <label><input type="radio" name="stype" value="channel" checked>頻道</label>
+            <label><input type="radio" name="stype" value="video">影片</label>
+          </div>
+          <input id="searchInput" type="search" placeholder="例如：巧虎、Super Simple Songs" enterkeyhint="search">
+          <button type="submit" class="btn primary">搜尋</button>
+        </form>
+        <div id="results" class="results"></div>
+      </div>
+
+      <div class="p-card">
+        <h2>核准的頻道 <span class="count" id="chCount"></span></h2>
+        <p class="muted">這些頻道的影片都會自動出現，頻道有新影片也會加進來。</p>
+        <ul id="chList" class="list"></ul>
+      </div>
+
+      <div class="p-card">
+        <h2>另外加入的影片 <span class="count" id="vCount"></span></h2>
+        <ul id="vList" class="list"></ul>
+      </div>
+
+      <div class="p-card">
+        <h2>內容限制</h2>
+        <label class="check"><input type="checkbox" id="optKids">只播 YouTube 標記「為兒童打造」的影片</label>
+        <label class="check"><input type="checkbox" id="optShorts">不播 Shorts 短片</label>
+        <label class="lbl" for="blockWords">標題有這些字就不播（用逗號或換行分開）</label>
+        <textarea id="blockWords" rows="3"></textarea>
+        <h3>封鎖的影片 <span class="count" id="bCount"></span></h3>
+        <ul id="bList" class="list"></ul>
+      </div>
+
+      <div class="p-card">
+        <h2>YouTube API 金鑰</h2>
+        <p class="muted">有金鑰才能搜尋、核准新頻道，並抓頻道的全部影片。沒有金鑰時是示範模式，只播內建的示範影片。</p>
+        <div class="row">
+          <input id="apiKey" type="password" autocomplete="off" placeholder="貼上 API 金鑰">
+          <button class="btn" id="saveKey">儲存</button>
+        </div>
+        <p class="muted" id="keyMsg" hidden></p>
+      </div>
+
+      <div class="p-card">
+        <h2>同步到 iPad</h2>
+        <p class="muted">產生一個連結，用 iPad 打開就會套用一樣的設定（放上網路之後才用得到）。連結裡有你的 API 金鑰，只傳給自己。</p>
+        <button class="btn" id="makeSync">產生同步連結</button>
+        <input id="syncOut" type="text" readonly hidden>
+      </div>
+    </div>
+  </section>
+
+  <script src="demo-videos.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
