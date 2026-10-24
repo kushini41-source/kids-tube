@@ -5,7 +5,7 @@
 const PLAYER_HOST = 'https://www.youtube.com';
 const API = 'https://www.googleapis.com/youtube/v3/';
 const SETTINGS_KEY = 'kidstube.settings.v1';
-const POOL_KEY = 'kidstube.pool.v1';
+const POOL_KEY = 'kidstube.pool.v2';   // v2 開始存影片長度
 const POOL_TTL = 12 * 60 * 60 * 1000;   // 影片清單 12 小時更新一次
 const PAGES_PER_CHANNEL = 4;            // 每個頻道抓最新的 200 部
 const SWITCH_COOLDOWN = 450;
@@ -20,6 +20,7 @@ const DEFAULTS = {
   blockWords: ['開箱', '整人', '惡作劇', '恐怖', '驚悚', '殭屍', '遊戲實況', 'unboxing', 'prank', 'horror', 'scary', 'gameplay'],
   kidsOnly: true,
   noShorts: true,
+  maxMinutes: 20,   // 0 = 不限制
 };
 
 const $ = id => document.getElementById(id);
@@ -77,9 +78,14 @@ function applyLocalFilters(list) {
   return list.filter(v => {
     if (seen.has(v.id) || blocked.has(v.id)) return false;
     seen.add(v.id);
-    if (extra.has(v.id)) return true;   // 家長親自加的影片不套字詞過濾
-    return approved.has(v.channelId) && !titleBlocked(v.title);
+    if (extra.has(v.id)) return true;   // 家長親自加的影片不套字詞和長度過濾
+    return approved.has(v.channelId) && !titleBlocked(v.title) && !tooLong(v);
   });
+}
+
+// 示範影片沒有長度資料，一律放行
+function tooLong(v) {
+  return settings.maxMinutes > 0 && v.dur > settings.maxMinutes * 60;
 }
 
 function demoPool() {
@@ -160,7 +166,7 @@ function suitable(v) {
 }
 
 function toItem(v) {
-  return { id: v.id, title: v.snippet.title, channel: v.snippet.channelTitle, channelId: v.snippet.channelId };
+  return { id: v.id, title: v.snippet.title, channel: v.snippet.channelTitle, channelId: v.snippet.channelId, dur: seconds(v.contentDetails.duration) };
 }
 
 function seconds(iso) {
@@ -534,7 +540,7 @@ function renderParent() {
 
   $('chCount').textContent = `(${settings.channels.length})`;
   renderList('chList', settings.channels, c => [
-    el('img', { src: c.thumb || '', alt: '' }),
+    c.thumb ? el('img', { src: c.thumb, alt: '' }) : el('div', { class: 'ph', textContent: c.title.slice(0, 1) }),
     el('span', { textContent: c.title }),
     el('button', { class: 'btn small', textContent: '移除', onclick: () => {
       settings.channels = settings.channels.filter(x => x.id !== c.id);
@@ -567,6 +573,7 @@ function renderParent() {
 
   $('optKids').checked = settings.kidsOnly;
   $('optShorts').checked = settings.noShorts;
+  $('optMax').value = String(settings.maxMinutes);
   $('blockWords').value = settings.blockWords.join('、');
 }
 
@@ -608,6 +615,7 @@ function bindParent() {
 
   $('optKids').addEventListener('change', e => { settings.kidsOnly = e.target.checked; saveSettings(); renderParent(); });
   $('optShorts').addEventListener('change', e => { settings.noShorts = e.target.checked; saveSettings(); renderParent(); });
+  $('optMax').addEventListener('change', e => { settings.maxMinutes = Number(e.target.value); saveSettings(); renderParent(); });
   $('blockWords').addEventListener('change', e => {
     settings.blockWords = e.target.value.split(/[,，、\n]/).map(w => w.trim()).filter(Boolean);
     saveSettings();
@@ -720,7 +728,6 @@ async function videoResults(ids) {
     thumb: v.snippet.thumbnails.medium.url,
     kids: v.status.madeForKids,
     embeddable: v.status.embeddable !== false,
-    dur: seconds(v.contentDetails.duration),
   }));
 }
 
@@ -838,6 +845,7 @@ function importFromHash() {
 // ---------- 開始 ----------
 
 async function start() {
+  try { localStorage.removeItem('kidstube.pool.v1'); } catch {}
   importFromHash();
   bindKidInputs();
   bindLock();

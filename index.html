@@ -129,6 +129,16 @@
         <h2>內容限制</h2>
         <label class="check"><input type="checkbox" id="optKids">只播 YouTube 標記「為兒童打造」的影片</label>
         <label class="check"><input type="checkbox" id="optShorts">不播 Shorts 短片</label>
+        <label class="check" for="optMax">每部影片最長
+          <select id="optMax">
+            <option value="10">10 分鐘</option>
+            <option value="15">15 分鐘</option>
+            <option value="20">20 分鐘</option>
+            <option value="30">30 分鐘</option>
+            <option value="60">1 小時</option>
+            <option value="0">不限制</option>
+          </select>
+        </label>
         <label class="lbl" for="blockWords">標題有這些字就不播（用逗號或換行分開）</label>
         <textarea id="blockWords" rows="3"></textarea>
         <h3>封鎖的影片 <span class="count" id="bCount"></span></h3>

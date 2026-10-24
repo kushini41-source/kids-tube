@@ -286,7 +286,7 @@ body { overflow: hidden; overscroll-behavior: none; -webkit-tap-highlight-color:
 .row { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
 .row input { flex: 1 1 200px; }
 
-input[type="search"], input[type="password"], input[type="text"], .lock input, textarea {
+input[type="search"], input[type="password"], input[type="text"], .lock input, textarea, select {
   min-width: 0;
   padding: 10px 12px;
   border: 1px solid var(--line);
@@ -337,6 +337,7 @@ textarea { width: 100%; resize: vertical; }
 .list li span { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .list img { flex: none; width: 36px; height: 36px; border-radius: 50%; object-fit: cover; background: #eee; }
 .list img.wide { width: 64px; border-radius: 6px; }
+.list .ph { flex: none; display: grid; place-items: center; width: 36px; height: 36px; border-radius: 50%; background: #ece8dc; color: var(--muted); font-weight: 700; }
 .empty { color: var(--muted); font-size: 14px; }
 
 .check { display: flex; align-items: center; gap: 10px; padding: 6px 0; }
