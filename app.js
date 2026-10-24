@@ -635,6 +635,15 @@ function bindParent() {
     try { await navigator.clipboard.writeText(link); out.value = link; } catch {}
   });
 
+  $('applySync').addEventListener('click', () => {
+    if (!$('syncIn').value.trim()) return;
+    if (applySetup($('syncIn').value)) {
+      $('syncIn').value = '';
+      $('apiKey').value = settings.apiKey;
+      renderParent();
+    }
+  });
+
   $('searchForm').addEventListener('submit', e => {
     e.preventDefault();
     doSearch();
@@ -804,19 +813,26 @@ function decodeSetup(text) {
   return JSON.parse(new TextDecoder().decode(Uint8Array.from(bin, c => c.charCodeAt(0))));
 }
 
-function importFromHash() {
-  const m = /^#setup=(.+)$/.exec(location.hash);
-  if (!m) return;
-  history.replaceState(null, '', location.pathname + location.search);
+// 接受整個同步連結，或只有 #setup= 後面那段
+function applySetup(text) {
+  const m = /#setup=([\w-]+)/.exec(text);
   try {
-    const data = decodeSetup(m[1]);
-    if (confirm('要套用這組家長設定嗎？這台裝置目前的設定會被取代。')) {
-      settings = { ...clone(DEFAULTS), ...data };
-      saveSettings();
-    }
+    const data = decodeSetup(m ? m[1] : text.trim());
+    if (!confirm('要套用這組家長設定嗎？這台裝置目前的設定會被取代。')) return false;
+    settings = { ...clone(DEFAULTS), ...data };
+    saveSettings();
+    return true;
   } catch {
     alert('同步連結的格式不正確。');
+    return false;
   }
+}
+
+function importFromHash() {
+  if (!location.hash.startsWith('#setup=')) return;
+  const hash = location.hash;
+  history.replaceState(null, '', location.pathname + location.search);
+  applySetup(hash);
 }
 
 // ---------- 開始 ----------

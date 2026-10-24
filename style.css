@@ -346,6 +346,7 @@ textarea { width: 100%; resize: vertical; }
 .now-row { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
 .now-row img { flex: none; width: 128px; aspect-ratio: 16 / 9; object-fit: cover; border-radius: 10px; background: #eee; }
 #syncOut { width: 100%; margin-top: 10px; }
+.sync-in { margin-top: 12px; }
 
 .lock {
   width: min(360px, calc(100vw - 32px));

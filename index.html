@@ -147,9 +147,13 @@
 
       <div class="p-card">
         <h2>同步到 iPad</h2>
-        <p class="muted">產生一個連結，用 iPad 打開就會套用一樣的設定（放上網路之後才用得到）。連結裡有你的 API 金鑰，只傳給自己。</p>
+        <p class="muted">在電腦產生連結，傳到 iPad。用 Safari 打開，或貼到下面的欄位按「套用」（加到主畫面的版本要用貼的）。連結裡有你的 API 金鑰，只傳給自己。</p>
         <button class="btn" id="makeSync">產生同步連結</button>
         <input id="syncOut" type="text" readonly hidden>
+        <div class="row sync-in">
+          <input id="syncIn" type="text" autocomplete="off" placeholder="貼上同步連結">
+          <button class="btn" id="applySync">套用</button>
+        </div>
       </div>
     </div>
   </section>
