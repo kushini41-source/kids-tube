@@ -8,6 +8,7 @@ const SETTINGS_KEY = 'kidstube.settings.v1';
 const POOL_KEY = 'kidstube.pool.v2';   // v2 開始存影片長度
 const POOL_TTL = 12 * 60 * 60 * 1000;   // 影片清單 12 小時更新一次
 const PAGES_PER_CHANNEL = 4;            // 每個頻道抓最新的 200 部
+const SERIES_GAP = 12;                  // 同一個系列至少隔 12 部才會再出現
 const SWITCH_COOLDOWN = 450;
 const AUTOPLAY_TIMEOUT = 4000;
 const MAX_ERROR_STREAK = 12;
@@ -33,7 +34,9 @@ let pos = 0;
 let poolDirty = false;
 let restartOnClose = false;
 let lastPoolError = '';
+let groups = new Map();   // 頻道 → 系列 → 影片
 const bad = new Set();
+const played = new Set();
 
 let player = null;
 let playerReady = false;
@@ -207,39 +210,107 @@ function shuffle(a) {
   return a;
 }
 
-// 每次隨機挑一個頻道再挑一部，避免同一個頻道連續出現太多次
-function newRound() {
-  const groups = new Map();
+// 同一個系列的影片開頭都一樣，小朋友會覺得一直在看同一部。
+// 系列 =【】裡的字，或同頻道好幾部影片標題共用的「｜」分段；找不到就把這部當成自己一個系列。
+function seriesSegments(title) {
+  const segs = [];
+  const bracket = /【([^】]+)】/.exec(title);
+  if (bracket) segs.push(bracket[1]);
+  segs.push(...title.split(/[|｜]/));
+  const norm = s => s.toLowerCase().replace(/[^\p{L}\p{N}]+/gu, ' ').replace(/\d+/g, '#').trim();
+  return [...new Set(segs.map(norm).filter(s => s.length >= 2))];
+}
+
+function assignSeries(list) {
+  const byChannel = new Map();
+  for (const v of list) {
+    if (!byChannel.has(v.channelId)) byChannel.set(v.channelId, []);
+    byChannel.get(v.channelId).push(v);
+  }
+  for (const vids of byChannel.values()) {
+    const segsOf = new Map(vids.map(v => [v, seriesSegments(v.title)]));
+    const count = new Map();
+    for (const segs of segsOf.values()) for (const s of segs) count.set(s, (count.get(s) || 0) + 1);
+    const common = Math.max(3, vids.length * 0.5);   // 大部分影片都有的分段是頻道名稱，不算系列
+    for (const v of vids) {
+      let best = null;
+      for (const s of segsOf.get(v)) {
+        const n = count.get(s);
+        if (n >= 2 && n < common && (!best || n < count.get(best))) best = s;
+      }
+      v.series = v.channelId + '/' + (best || v.id);
+    }
+  }
+}
+
+function buildGroups() {
+  assignSeries(pool);
+  groups = new Map();
   for (const v of pool) {
     if (bad.has(v.id)) continue;
-    if (!groups.has(v.channelId)) groups.set(v.channelId, []);
-    groups.get(v.channelId).push(v);
+    if (!groups.has(v.channelId)) groups.set(v.channelId, new Map());
+    const bySeries = groups.get(v.channelId);
+    if (!bySeries.has(v.series)) bySeries.set(v.series, []);
+    bySeries.get(v.series).push(v);
   }
-  groups.forEach(shuffle);
-  const out = [];
-  while (groups.size) {
-    const keys = [...groups.keys()];
-    const key = keys[Math.floor(Math.random() * keys.length)];
-    const list = groups.get(key);
-    out.push(list.pop());
-    if (!list.length) groups.delete(key);
+}
+
+function removeFromGroups(v) {
+  const bySeries = groups.get(v.channelId);
+  const list = bySeries && bySeries.get(v.series);
+  if (!list) return;
+  list.splice(list.indexOf(v), 1);
+  if (!list.length) bySeries.delete(v.series);
+  if (!bySeries.size) groups.delete(v.channelId);
+}
+
+function lastSeen(match) {
+  for (let i = queue.length - 1; i >= 0; i--) if (match(queue[i])) return i;
+  return -1;
+}
+
+// 從比較久沒出現的那一半裡隨機挑一個
+function pickStale(keys, seenAt) {
+  const sorted = shuffle([...keys]).sort((a, b) => seenAt(a) - seenAt(b));
+  return sorted[Math.floor(Math.random() * Math.ceil(sorted.length / 2))];
+}
+
+// 下一部：換一個頻道 → 挑最近沒播過的系列 → 系列裡還沒看過的一部
+function pickNext() {
+  const prev = queue[queue.length - 1];
+  let channels = [...groups.keys()];
+  if (prev && channels.length > 1) channels = channels.filter(c => c !== prev.channelId);
+  if (!channels.length) return null;
+  const channel = pickStale(channels, c => lastSeen(v => v.channelId === c));
+
+  const bySeries = groups.get(channel);
+  const recent = new Set(queue.slice(-SERIES_GAP).map(v => v.series));
+  let series = [...bySeries.keys()].filter(s => !recent.has(s));
+  if (!series.length) series = [pickStale(bySeries.keys(), s => lastSeen(v => v.series === s))];
+  const vids = bySeries.get(series[Math.floor(Math.random() * series.length)]);
+
+  let fresh = vids.filter(v => !played.has(v.id));
+  if (!fresh.length) {   // 這個系列都看過了，重新來過，但不要馬上重播剛剛那部
+    vids.forEach(v => played.delete(v.id));
+    fresh = vids.length > 1 ? vids.filter(v => !prev || v.id !== prev.id) : vids;
   }
-  const last = queue[queue.length - 1];
-  if (last && out.length > 1 && out[0].id === last.id) [out[0], out[1]] = [out[1], out[0]];
-  return out;
+  const next = fresh[Math.floor(Math.random() * fresh.length)];
+  played.add(next.id);
+  return next;
 }
 
 function ensureAhead() {
-  while (pool.length && queue.length - pos < 4) {
-    const round = newRound();
-    if (!round.length) break;
-    queue.push(...round);
+  while (queue.length - pos < 4) {
+    const next = pickNext();
+    if (!next) break;
+    queue.push(next);
   }
 }
 
 function resetQueue() {
+  buildGroups();
   queue = [];
-  queue = newRound();
+  played.clear();
   pos = 0;
   ensureAhead();
 }
@@ -298,6 +369,8 @@ function onError(e) {
   const v = queue[pos];
   if (!v) return;
   bad.add(v.id);
+  removeFromGroups(v);
+  for (let i = queue.length - 1; i > pos; i--) if (queue[i].id === v.id) queue.splice(i, 1);
   queue.splice(pos, 1);
   if (lastDir < 0) pos = Math.max(0, pos - 1);
   if (++errorStreak > MAX_ERROR_STREAK || !queue.length) {
