@@ -108,7 +108,7 @@
             <label><input type="radio" name="stype" value="channel" checked>頻道</label>
             <label><input type="radio" name="stype" value="video">影片</label>
           </div>
-          <input id="searchInput" type="search" placeholder="例如：巧虎、Super Simple Songs" enterkeyhint="search">
+          <input id="searchInput" type="search" placeholder="例如：巧虎、海底小縱隊" enterkeyhint="search">
           <button type="submit" class="btn primary">搜尋</button>
         </form>
         <div id="results" class="results"></div>
@@ -118,6 +118,15 @@
         <h2>核准的頻道 <span class="count" id="chCount"></span></h2>
         <p class="muted">這些頻道的影片都會自動出現，頻道有新影片也會加進來。</p>
         <ul id="chList" class="list"></ul>
+      </div>
+
+      <div class="p-card">
+        <h2>建議頻道（5–7 歲）</h2>
+        <p class="muted">整理好的兒童頻道，中文和英文都有。有 API 金鑰時，只會播其中標記「為兒童打造」的影片。</p>
+        <ul id="recoList" class="list"></ul>
+        <div class="row reco-actions">
+          <button class="btn" id="addAllReco">全部加入</button>
+        </div>
       </div>
 
       <div class="p-card">

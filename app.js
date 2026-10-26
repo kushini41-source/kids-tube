@@ -18,11 +18,17 @@ const DEFAULTS = {
   channels: (window.DEMO_CHANNELS || []).map(c => ({ id: c.id, title: c.title })),
   videos: [],
   blockedVideos: [],
-  blockWords: ['開箱', '整人', '惡作劇', '恐怖', '驚悚', '殭屍', '遊戲實況', 'unboxing', 'prank', 'horror', 'scary', 'gameplay'],
+  blockWords: ['開箱', '整人', '惡作劇', '恐怖', '驚悚', '殭屍', '遊戲實況', '新聞超小號', 'unboxing', 'prank', 'horror', 'scary', 'gameplay'],
   kidsOnly: true,
   noShorts: true,
   maxMinutes: 20,   // 0 = 不限制
+  recoVersion: 2,
 };
+
+// 第 2 版的建議頻道改成 5–7 歲：拿掉偏幼兒的舊預設頻道，補上新的建議頻道。
+// 家長自己加的頻道不動，舊建議裡被家長移除的也不會加回來。
+const OLD_PRESCHOOL_IDS = ['UCrLO-yoAu4ZTzRSdmWqS53A', 'UCLsooMJoIpl_7ux2jvdPB-Q', 'UCoookXUzPciGrEZEXmh4Jjg'];
+const OLD_RECO_IDS = [...OLD_PRESCHOOL_IDS, 'UCnjadOj5qlKXsTAXPSwc67A', 'UCVzLLZkDuFGAE2BGdBuBNBg'];
 
 const $ = id => document.getElementById(id);
 const clone = o => JSON.parse(JSON.stringify(o));
@@ -55,9 +61,28 @@ const apiReady = new Promise(resolve => { window.onYouTubeIframeAPIReady = resol
 function loadSettings() {
   try {
     const saved = JSON.parse(localStorage.getItem(SETTINGS_KEY));
-    if (saved) return { ...clone(DEFAULTS), ...saved };
+    if (saved) {
+      const s = fromSaved(saved);
+      if (s.recoVersion !== saved.recoVersion) localStorage.setItem(SETTINGS_KEY, JSON.stringify(s));
+      return s;
+    }
   } catch {}
   return clone(DEFAULTS);
+}
+
+// 舊版存的設定沒有 recoVersion，要先當成第 1 版再升級
+function fromSaved(saved) {
+  const s = { ...clone(DEFAULTS), ...saved, recoVersion: saved.recoVersion || 1 };
+  if (s.recoVersion < DEFAULTS.recoVersion) {
+    const had = new Set(s.channels.map(c => c.id));
+    s.channels = s.channels.filter(c => !OLD_PRESCHOOL_IDS.includes(c.id));
+    for (const c of window.DEMO_CHANNELS || []) {
+      if (!OLD_RECO_IDS.includes(c.id) && !had.has(c.id)) s.channels.push({ id: c.id, title: c.title });
+    }
+    if (!s.blockWords.includes('新聞超小號')) s.blockWords.push('新聞超小號');
+    s.recoVersion = DEFAULTS.recoVersion;
+  }
+  return s;
 }
 
 function saveSettings() {
@@ -622,6 +647,20 @@ function renderParent() {
     } }),
   ], '還沒有核准任何頻道');
 
+  const approvedIds = new Set(settings.channels.map(c => c.id));
+  const reco = window.DEMO_CHANNELS || [];
+  renderList('recoList', reco, c => [
+    el('div', { class: 'ph', textContent: c.title.slice(0, 1) }),
+    el('div', { class: 'reco-info' },
+      el('p', { class: 'r-title', textContent: c.title }),
+      el('p', { class: 'r-meta', textContent: c.note })),
+    el('button', {
+      class: 'btn small', textContent: approvedIds.has(c.id) ? '已加入' : '加入', disabled: approvedIds.has(c.id),
+      onclick: () => approveChannel(c.id, c.title),
+    }),
+  ], '');
+  $('addAllReco').disabled = reco.every(c => approvedIds.has(c.id));
+
   $('vCount').textContent = `(${settings.videos.length})`;
   renderList('vList', settings.videos, v => [
     el('img', { class: 'wide', src: `https://i.ytimg.com/vi/${v.id}/mqdefault.jpg`, alt: '' }),
@@ -683,6 +722,14 @@ function bindParent() {
     settings.blockedVideos.push({ id: cur.id, title: cur.title });
     saveSettings();
     restartOnClose = true;
+    renderParent();
+  });
+
+  $('addAllReco').addEventListener('click', () => {
+    for (const c of window.DEMO_CHANNELS || []) {
+      if (!settings.channels.some(x => x.id === c.id)) settings.channels.push({ id: c.id, title: c.title });
+    }
+    saveSettings();
     renderParent();
   });
 
@@ -899,7 +946,7 @@ function applySetup(text) {
   try {
     const data = decodeSetup(m ? m[1] : text.trim());
     if (!confirm('要套用這組家長設定嗎？這台裝置目前的設定會被取代。')) return false;
-    settings = { ...clone(DEFAULTS), ...data };
+    settings = fromSaved(data);
     saveSettings();
     return true;
   } catch {

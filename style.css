@@ -337,6 +337,9 @@ textarea { width: 100%; resize: vertical; }
 .list li span { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .list img { flex: none; width: 36px; height: 36px; border-radius: 50%; object-fit: cover; background: #eee; }
 .list img.wide { width: 64px; border-radius: 6px; }
+.list .reco-info { flex: 1; min-width: 0; }
+.list .reco-info .r-meta { display: block; }
+.reco-actions { margin-top: 12px; }
 .list .ph { flex: none; display: grid; place-items: center; width: 36px; height: 36px; border-radius: 50%; background: #ece8dc; color: var(--muted); font-weight: 700; }
 .empty { color: var(--muted); font-size: 14px; }
 

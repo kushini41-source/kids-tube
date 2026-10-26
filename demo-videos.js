@@ -1,27 +1,149 @@
-// 示範模式用的影片（還沒設定 API 金鑰時使用），來源：官方兒童頻道的一般長度影片
+// 建議頻道（5–7 歲）和示範模式用的影片（還沒設定 API 金鑰時使用），來源：各頻道最新的一般長度影片
 window.DEMO_CHANNELS = [
   {
+    "id": "UCUK0qeXwXSu_sZukMo-gwpw",
+    "title": "小公視",
+    "note": "公視的兒少頻道。少數節目是給 10 歲以上看的，已預設擋掉《新聞超小號》"
+  },
+  {
     "id": "UCnjadOj5qlKXsTAXPSwc67A",
-    "title": "巧虎TV（台灣巧連智官方頻道）"
+    "title": "巧虎TV（台灣巧連智官方頻道）",
+    "note": "生活習慣、認知學習，適合 5–6 歲"
   },
   {
-    "id": "UCrLO-yoAu4ZTzRSdmWqS53A",
-    "title": "碰碰狐 鯊魚寶寶 (兒童兒歌・故事)"
+    "id": "UCMuaUEAY791k1qoJb1kNvWg",
+    "title": "海底小纵队",
+    "note": "Octonauts 官方中文配音，海洋動物與救援冒險（簡體字幕）"
   },
   {
-    "id": "UCLsooMJoIpl_7ux2jvdPB-Q",
-    "title": "Super Simple Songs - Kids Songs"
+    "id": "UCgoiUg4LrO28_S0tBafdpcg",
+    "title": "佳佳老師說故事",
+    "note": "寓言和民間故事繪本（個人頻道）"
   },
   {
     "id": "UCVzLLZkDuFGAE2BGdBuBNBg",
-    "title": "Bluey - Official Channel"
+    "title": "Bluey - Official Channel",
+    "note": "英文。家庭生活和想像遊戲"
   },
   {
-    "id": "UCoookXUzPciGrEZEXmh4Jjg",
-    "title": "Sesame Street"
+    "id": "UCPlwvN0w4qFSP1FllALB92w",
+    "title": "Numberblocks",
+    "note": "英文。BBC 的數字與數學動畫"
+  },
+  {
+    "id": "UCRFIPG2u1DxKLNuE3y2SjHA",
+    "title": "SciShow Kids",
+    "note": "英文。自然科學小知識"
+  },
+  {
+    "id": "UCrNnk0wFBnCS1awGjq_ijGQ",
+    "title": "PBS KIDS",
+    "note": "英文。美國公共電視的兒童節目"
   }
 ];
 window.DEMO_VIDEOS = [
+  {
+    "id": "kxmlNnRNLQs",
+    "title": "初代明星的誕生▸▸古典魔力客𝗦𝟭口述影像版｜小公視",
+    "channelId": "UCUK0qeXwXSu_sZukMo-gwpw",
+    "channel": "小公視"
+  },
+  {
+    "id": "uUi0HtpkbR8",
+    "title": "《歡迎光臨我的牧場S2》EP3🦜家裡竟然養了10隻大型鸚鵡？！ 小主人帶你探索動物王國！｜小公視",
+    "channelId": "UCUK0qeXwXSu_sZukMo-gwpw",
+    "channel": "小公視"
+  },
+  {
+    "id": "5ZJJkSG_Y0w",
+    "title": "木木隊長🍭 糖果星球大冒險 🍬 EP2｜市政府幼兒園強勢出擊！勇闖糖果星球大冒險🪐｜小公視",
+    "channelId": "UCUK0qeXwXSu_sZukMo-gwpw",
+    "channel": "小公視"
+  },
+  {
+    "id": "kN1WOTySK0g",
+    "title": "🌍 火車掰掰～臺南火車地底下見、小熊維尼100歲生日！超人忙滅火？｜20261023《新聞超小號》EP34",
+    "channelId": "UCUK0qeXwXSu_sZukMo-gwpw",
+    "channel": "小公視"
+  },
+  {
+    "id": "bo0SHEJu7_k",
+    "title": "🏔️大山小腳丫𝗘𝗣𝟮｜學不會明天怎麼辦？鋸竹子、搭獵寮、射弓箭，小腳丫們能挺過山林試煉嗎？｜小公視",
+    "channelId": "UCUK0qeXwXSu_sZukMo-gwpw",
+    "channel": "小公視"
+  },
+  {
+    "id": "x5U5IQfAKWw",
+    "title": "木木隊長🍭 糖果星球大冒險 🍬 首播 EP1｜酸酸魔王來襲！快跟著萊恩思幼兒園一起冒險出發🪐｜小公視",
+    "channelId": "UCUK0qeXwXSu_sZukMo-gwpw",
+    "channel": "小公視"
+  },
+  {
+    "id": "2vF6zsQW1gA",
+    "title": "TCUP 和 Noodle 又回來了！11/4起，全新的宇宙冒險再度開航啦［中文版］｜【The TCUP Show】",
+    "channelId": "UCUK0qeXwXSu_sZukMo-gwpw",
+    "channel": "小公視"
+  },
+  {
+    "id": "K8J-b5NJ3yQ",
+    "title": "新聞超小號【 關鍵字：月經】▸▸從禁忌到自在 不懂月經非暖男｜小公視",
+    "channelId": "UCUK0qeXwXSu_sZukMo-gwpw",
+    "channel": "小公視"
+  },
+  {
+    "id": "MbIF_DW-7mA",
+    "title": "樂譜上的隱形音符▸▸古典魔力客𝗦𝟭口述影像版｜小公視",
+    "channelId": "UCUK0qeXwXSu_sZukMo-gwpw",
+    "channel": "小公視"
+  },
+  {
+    "id": "bNpaw3jquaQ",
+    "title": "🦌小梅&穿穿🐾第十一集：嗝不停！｜小公視",
+    "channelId": "UCUK0qeXwXSu_sZukMo-gwpw",
+    "channel": "小公視"
+  },
+  {
+    "id": "DQa8lsxTcWU",
+    "title": "🦌小梅&穿穿🐾第十三集：時光膠囊｜小公視",
+    "channelId": "UCUK0qeXwXSu_sZukMo-gwpw",
+    "channel": "小公視"
+  },
+  {
+    "id": "bzOAYVFyTbA",
+    "title": "🦌小梅&穿穿🐾第十二集：萬聖節來了｜小公視",
+    "channelId": "UCUK0qeXwXSu_sZukMo-gwpw",
+    "channel": "小公視"
+  },
+  {
+    "id": "67kXBTgxbrk",
+    "title": "《歡迎光臨我的牧場S2》EP2🐄乳牛一天要擠幾次奶？！小主人帶你走進乳牛的生活！｜小公視",
+    "channelId": "UCUK0qeXwXSu_sZukMo-gwpw",
+    "channel": "小公視"
+  },
+  {
+    "id": "mTqIDpbXxnc",
+    "title": "🦌小梅&穿穿🐾EP13預告：時光膠囊－勇敢嘗試與改變｜10.17小公視",
+    "channelId": "UCUK0qeXwXSu_sZukMo-gwpw",
+    "channel": "小公視"
+  },
+  {
+    "id": "j_1qXM7-b70",
+    "title": "🌍 不會走也能跑？框架車是什麼運動！月經為什麼不能大方聊？農田裡的超級女俠來了｜20261016《新聞超小號》EP33",
+    "channelId": "UCUK0qeXwXSu_sZukMo-gwpw",
+    "channel": "小公視"
+  },
+  {
+    "id": "6KKplITx_g0",
+    "title": "巧虎【生活好習慣】洗頭洗澡好舒服",
+    "channelId": "UCnjadOj5qlKXsTAXPSwc67A",
+    "channel": "巧虎TV（台灣巧連智官方頻道）"
+  },
+  {
+    "id": "E8GyIoLGaTE",
+    "title": "巧虎【唱唱跳跳】一起來跳舞",
+    "channelId": "UCnjadOj5qlKXsTAXPSwc67A",
+    "channel": "巧虎TV（台灣巧連智官方頻道）"
+  },
   {
     "id": "zYb70m_mQKo",
     "title": "第13季【可愛巧虎島】我要當王子",
@@ -101,196 +223,196 @@ window.DEMO_VIDEOS = [
     "channel": "巧虎TV（台灣巧連智官方頻道）"
   },
   {
-    "id": "JdZ3pG_8xYY",
-    "title": "巧虎【巧虎大驚奇】氣球大集合",
-    "channelId": "UCnjadOj5qlKXsTAXPSwc67A",
-    "channel": "巧虎TV（台灣巧連智官方頻道）"
+    "id": "n2vfBB9GwDQ",
+    "title": "海底小纵队 - ☀️ 海滩救援 🤿 | 汇编 | 集完整版",
+    "channelId": "UCMuaUEAY791k1qoJb1kNvWg",
+    "channel": "海底小纵队"
   },
   {
-    "id": "Nl3kfb7c8Ps",
-    "title": "第13季【可愛巧虎島】只要大家一起笑",
-    "channelId": "UCnjadOj5qlKXsTAXPSwc67A",
-    "channel": "巧虎TV（台灣巧連智官方頻道）"
+    "id": "OfqGutfmLdg",
+    "title": "海底小纵队 - 🐻‍❄️😼🐧 海洋救援队集结! 🌊 | ⏱️ 1小时+汇编 | 集完整版",
+    "channelId": "UCMuaUEAY791k1qoJb1kNvWg",
+    "channel": "海底小纵队"
   },
   {
-    "id": "x_mACQdaRXY",
-    "title": "啊！我的臉怎麼了？🫣 Ah! What's Happened to My Face!  鯊魚寶寶 萬聖節 卡通動畫 🎃 | 台灣配音 中文 兒歌 | 碰碰狐 Pinkfong",
-    "channelId": "UCrLO-yoAu4ZTzRSdmWqS53A",
-    "channel": "碰碰狐 鯊魚寶寶 (兒童兒歌・故事)"
+    "id": "-tCiymQs77A",
+    "title": "海底小纵队 - ☀️ 暑假探访巴克队长的家园 🐻 | 精彩片段! | 集完整版",
+    "channelId": "UCMuaUEAY791k1qoJb1kNvWg",
+    "channel": "海底小纵队"
   },
   {
-    "id": "H5OlpVkwIKI",
-    "title": "不給糖就搗蛋！萬聖節糖果大冒險 🍬 鯊魚寶寶 萬聖節 卡通動畫 🎃 Trick or Treat! Halloween Candy Adventure | 台灣配音 中文 兒歌 | 碰碰狐",
-    "channelId": "UCrLO-yoAu4ZTzRSdmWqS53A",
-    "channel": "碰碰狐 鯊魚寶寶 (兒童兒歌・故事)"
+    "id": "U1myrlpWusc",
+    "title": "海底小纵队 - 🦈 巨型鲨鱼! 🦈 | 汇编 | 集完整版",
+    "channelId": "UCMuaUEAY791k1qoJb1kNvWg",
+    "channel": "海底小纵队"
   },
   {
-    "id": "wL74Iao2JOU",
-    "title": "怪獸巴士 🚌 殭屍鯊魚一家 🎃 鯊魚寶寶 山米哥哥 海一哥哥 萬聖節 卡通動畫 精選合集 | Halloween 兒歌 童謠 | Baby Shark 碰碰狐 Pinkfong",
-    "channelId": "UCrLO-yoAu4ZTzRSdmWqS53A",
-    "channel": "碰碰狐 鯊魚寶寶 (兒童兒歌・故事)"
+    "id": "GXcXINTFaig",
+    "title": "海底小纵队 - 🦈 鲨鱼周马拉松! 🤿 | ⏱️ 1小时+汇编 | 集完整版",
+    "channelId": "UCMuaUEAY791k1qoJb1kNvWg",
+    "channel": "海底小纵队"
   },
   {
-    "id": "dBD46k0o448",
-    "title": "怪物的眼睛在哪裡？👁️ Where Are My Eyes | 碰碰狐 萬聖節 卡通 動畫 🎃 台灣配音 中文 兒歌 | Pinkfong!",
-    "channelId": "UCrLO-yoAu4ZTzRSdmWqS53A",
-    "channel": "碰碰狐 鯊魚寶寶 (兒童兒歌・故事)"
+    "id": "z9LpdEslDsU",
+    "title": "海底小纵队 - 🐰 突突兔的舰艇连接器救援! 🔧 | 精彩片段! | 集完整版",
+    "channelId": "UCMuaUEAY791k1qoJb1kNvWg",
+    "channel": "海底小纵队"
   },
   {
-    "id": "4fjaQtpcvwE",
-    "title": "警察怪獸卡車 🚓 黃色巴士 🚌 受傷了 | 碰碰狐 汽車修理遊戲 卡通 動畫 連續播放合集 | 台灣配音 中文 兒歌 | Pinkfong!",
-    "channelId": "UCrLO-yoAu4ZTzRSdmWqS53A",
-    "channel": "碰碰狐 鯊魚寶寶 (兒童兒歌・故事)"
+    "id": "MgQpJniXCwY",
+    "title": "海底小纵队 - 🦭 了不起的双人组 🦭 | 汇编 | 集完整版",
+    "channelId": "UCMuaUEAY791k1qoJb1kNvWg",
+    "channel": "海底小纵队"
   },
   {
-    "id": "FgiQ_BVNryQ",
-    "title": "和幽靈骷髏按按樂一起學顏色 🌈 多奇 Learn Colors 萬聖節 顏色遊戲 🎃 Spooky Skeleton Pop It | 台灣配音 中文 卡通 動畫 兒歌 | 碰碰狐 Pinkfong!",
-    "channelId": "UCrLO-yoAu4ZTzRSdmWqS53A",
-    "channel": "碰碰狐 鯊魚寶寶 (兒童兒歌・故事)"
+    "id": "GtFnuRcWjoE",
+    "title": "海底小纵队 - ☀️🏫 学校假期马拉松 ☀️ 🤿 | ⏱️ 1小时+汇编 | 集完整版",
+    "channelId": "UCMuaUEAY791k1qoJb1kNvWg",
+    "channel": "海底小纵队"
   },
   {
-    "id": "HxSC7m9-j2Y",
-    "title": "殭屍鯊魚 🧟 怪獸卡車 +更多 萬聖節怪物 卡通 動畫 連續播放合集 🎃 Halloween 台灣配音 中文 兒歌 童謠 | 鯊魚寶寶 Baby Shark 碰碰狐 Pinkfong!",
-    "channelId": "UCrLO-yoAu4ZTzRSdmWqS53A",
-    "channel": "碰碰狐 鯊魚寶寶 (兒童兒歌・故事)"
+    "id": "p9HX0qNiCww",
+    "title": "海底小纵队 - ⛑️ 拯救双髻鲨宝宝 🦈 | 精彩片段! | 集完整版",
+    "channelId": "UCMuaUEAY791k1qoJb1kNvWg",
+    "channel": "海底小纵队"
   },
   {
-    "id": "r9mqZUCSDgI",
-    "title": "和五顆彩色南瓜監獄一起學顏色 🌈 多奇 Learn Colors 萬聖節 顏色遊戲 🎃 Five Pumpkin Prisons | 台灣配音 中文 卡通 動畫 兒歌 | 碰碰狐 Pinkfong!",
-    "channelId": "UCrLO-yoAu4ZTzRSdmWqS53A",
-    "channel": "碰碰狐 鯊魚寶寶 (兒童兒歌・故事)"
+    "id": "4v1FZLBGnx8",
+    "title": "海底小纵队 - 🥇 夏季奥运会企鹅赛 🐧 | 汇编 | 集完整版",
+    "channelId": "UCMuaUEAY791k1qoJb1kNvWg",
+    "channel": "海底小纵队"
   },
   {
-    "id": "zAd6JXeqc2U",
-    "title": "殭屍鯊魚家族的躲貓貓 🧟🦈 +更多 鯊魚寶寶 🎃 萬聖節 Halloween 卡通動畫 連續播放合集 | 台灣配音 中文 兒歌 童謠 | Baby Shark 碰碰狐 Pinkfong!",
-    "channelId": "UCrLO-yoAu4ZTzRSdmWqS53A",
-    "channel": "碰碰狐 鯊魚寶寶 (兒童兒歌・故事)"
+    "id": "Wf9p_nJM8s8",
+    "title": "海底小纵队 - ☀️ 夏季海洋巨浪探险 🌊 | ⏱️ 1小时+汇编 | 集完整版",
+    "channelId": "UCMuaUEAY791k1qoJb1kNvWg",
+    "channel": "海底小纵队"
   },
   {
-    "id": "XMgxmBfZ9G4",
-    "title": "[New] 哇！萬聖節怪物看醫生 🧟🦈 醫生鯊魚寶寶的醫院遊戲 第2季 🏥 Halloween 🎃 台灣配音 中文 卡通 動畫 故事｜Baby Shark 碰碰狐 Pinkfong!",
-    "channelId": "UCrLO-yoAu4ZTzRSdmWqS53A",
-    "channel": "碰碰狐 鯊魚寶寶 (兒童兒歌・故事)"
+    "id": "Zr9YNkUZVIo",
+    "title": "海底小纵队 - 🦦 珍珠和派里克救援 ⛑️ | 精彩片段! | 集完整版",
+    "channelId": "UCMuaUEAY791k1qoJb1kNvWg",
+    "channel": "海底小纵队"
   },
   {
-    "id": "A2qEP9eKT8A",
-    "title": "鯊魚寶寶 碰碰狐 中秋節 🌝 人氣經典兒歌 連續播放合集 🍢 中秋烤肉 全家一起聽兒歌 | 台灣配音 中文+英語 兒歌 童謠 | Baby Shark 碰碰狐 Pinkfong!",
-    "channelId": "UCrLO-yoAu4ZTzRSdmWqS53A",
-    "channel": "碰碰狐 鯊魚寶寶 (兒童兒歌・故事)"
+    "id": "agaF_f2zbIM",
+    "title": "海底小纵队 - 🌋 黑暗深处 🤿 | 汇编 | 集完整版",
+    "channelId": "UCMuaUEAY791k1qoJb1kNvWg",
+    "channel": "海底小纵队"
   },
   {
-    "id": "DM2x6lr9Q5c",
-    "title": "[New] 跟山米哥哥一起玩超可怕的萬聖節遊戲！🎃 Halloween 🦸 山米哥哥 超級英雄任務｜台灣配音 中文 卡通 動畫 故事｜Baby Shark 碰碰狐 Pinkfong!",
-    "channelId": "UCrLO-yoAu4ZTzRSdmWqS53A",
-    "channel": "碰碰狐 鯊魚寶寶 (兒童兒歌・故事)"
+    "id": "l2Oi7DLZqfU",
+    "title": "海底小纵队 - 🦦 最可爱的海洋生物宝宝 🐬 | 汇编 | 集完整版",
+    "channelId": "UCMuaUEAY791k1qoJb1kNvWg",
+    "channel": "海底小纵队"
   },
   {
-    "id": "S5Czeoy-VsY",
-    "title": "痛痛歌 🚑 快逃啊! 鯊魚們 🦈 +更多 海一哥哥 卡通 動畫 兒歌 連續播放 | 鯊魚寶寶 Baby Shark 碰碰狐 Pinkfong!",
-    "channelId": "UCrLO-yoAu4ZTzRSdmWqS53A",
-    "channel": "碰碰狐 鯊魚寶寶 (兒童兒歌・故事)"
+    "id": "41L68X_Dfic",
+    "title": "海底小纵队 - 🦦 小萝卜帮助谢灵通追踪永生水母 🎐 | 精彩片段! | 集完整版",
+    "channelId": "UCMuaUEAY791k1qoJb1kNvWg",
+    "channel": "海底小纵队"
   },
   {
-    "id": "0NrSdR2JDjM",
-    "title": "[NEW] 殭屍警車壞掉了 🧟 Zombie Police Car is Broken! 🚓 萬聖節 Halloween 卡通動畫 🎃 碰碰狐 汽車修理遊戲 | 台灣配音 中文 Pinkfong!",
-    "channelId": "UCrLO-yoAu4ZTzRSdmWqS53A",
-    "channel": "碰碰狐 鯊魚寶寶 (兒童兒歌・故事)"
+    "id": "bk_Ob2aVXEM",
+    "title": "【 佳佳老師說故事 】EP244《 獅子和綿羊 》｜兒童故事繪本｜幼兒睡前故事",
+    "channelId": "UCgoiUg4LrO28_S0tBafdpcg",
+    "channel": "佳佳老師說故事"
   },
   {
-    "id": "FtrXggU_snU",
-    "title": "碰碰狐的生日兒歌合集 🦊 🎉 生日快樂 +更多 生日歌 🎂 經典兒歌 連續播放 | 鯊魚寶寶 Baby Shark Pinkfong!",
-    "channelId": "UCrLO-yoAu4ZTzRSdmWqS53A",
-    "channel": "碰碰狐 鯊魚寶寶 (兒童兒歌・故事)"
+    "id": "b_gSsStfS8Y",
+    "title": "【 佳佳老師說故事 】EP243《 盲人摸象 》｜兒童故事繪本｜幼兒睡前故事",
+    "channelId": "UCgoiUg4LrO28_S0tBafdpcg",
+    "channel": "佳佳老師說故事"
   },
   {
-    "id": "KKNHyhl6aXU",
-    "title": "Top 20 Halloween Songs 🎃 🍬| Kids Songs | Super Simple Songs",
-    "channelId": "UCLsooMJoIpl_7ux2jvdPB-Q",
-    "channel": "Super Simple Songs - Kids Songs"
+    "id": "H01rHePErSQ",
+    "title": "【 佳佳老師說故事 】EP242《 驢子和馬 》｜兒童故事繪本｜幼兒睡前故事",
+    "channelId": "UCgoiUg4LrO28_S0tBafdpcg",
+    "channel": "佳佳老師說故事"
   },
   {
-    "id": "Ne-ZcF58px4",
-    "title": "Halloween Night | 🍕 Dress Up As Food You Like for Halloween Night! | Super Simple Songs",
-    "channelId": "UCLsooMJoIpl_7ux2jvdPB-Q",
-    "channel": "Super Simple Songs - Kids Songs"
+    "id": "9OalfwdLF40",
+    "title": "【 佳佳老師說故事 】EP241《 下金蛋的鵝 》｜兒童故事繪本｜幼兒睡前故事",
+    "channelId": "UCgoiUg4LrO28_S0tBafdpcg",
+    "channel": "佳佳老師說故事"
   },
   {
-    "id": "LuJe0ad1Ygk",
-    "title": "When We Play Hockey 🏒 | Super Simple Songs & ‪@NHL Hockey Song for Kids",
-    "channelId": "UCLsooMJoIpl_7ux2jvdPB-Q",
-    "channel": "Super Simple Songs - Kids Songs"
+    "id": "MTOSLR0F-lk",
+    "title": "【 佳佳老師說故事 】EP240《 國王的新衣 》｜兒童故事繪本｜幼兒睡前故事",
+    "channelId": "UCgoiUg4LrO28_S0tBafdpcg",
+    "channel": "佳佳老師說故事"
   },
   {
-    "id": "GzIObE7uR8Q",
-    "title": "Top 20 Anniversary Hit Songs 🎶 | \"20 Years of Super Simple\" now on Vinyl!",
-    "channelId": "UCLsooMJoIpl_7ux2jvdPB-Q",
-    "channel": "Super Simple Songs - Kids Songs"
+    "id": "dcaSMz9cpxM",
+    "title": "【 佳佳老師說故事 】EP239《 神筆馬良 》｜兒童故事繪本｜幼兒睡前故事",
+    "channelId": "UCgoiUg4LrO28_S0tBafdpcg",
+    "channel": "佳佳老師說故事"
   },
   {
-    "id": "uBweptmCYZg",
-    "title": "Our Listening Ears 👂 | Animal Sounds & Guessing Game for Kids! | Super Simple Songs",
-    "channelId": "UCLsooMJoIpl_7ux2jvdPB-Q",
-    "channel": "Super Simple Songs - Kids Songs"
+    "id": "bFsiLwYFnkk",
+    "title": "【 佳佳老師說故事 】EP238《 曹沖秤象 》｜兒童故事繪本｜幼兒睡前故事",
+    "channelId": "UCgoiUg4LrO28_S0tBafdpcg",
+    "channel": "佳佳老師說故事"
   },
   {
-    "id": "2QtoaV22rpY",
-    "title": "Top 20 Circle Time Songs ⭕️ | Kids Classroom Favorites | Super Simple's 20th Anniversary!",
-    "channelId": "UCLsooMJoIpl_7ux2jvdPB-Q",
-    "channel": "Super Simple Songs - Kids Songs"
+    "id": "fkGBLNvbKhk",
+    "title": "【 佳佳老師說故事 】EP237《 小蝌蚪找媽媽 》｜兒童故事繪本｜幼兒睡前故事",
+    "channelId": "UCgoiUg4LrO28_S0tBafdpcg",
+    "channel": "佳佳老師說故事"
   },
   {
-    "id": "iHP8FGwzjJg",
-    "title": "🎉 Everybody Celebrate 🎉 | Best Celebration Song for Kids | 20 Years of Super Simple Songs!",
-    "channelId": "UCLsooMJoIpl_7ux2jvdPB-Q",
-    "channel": "Super Simple Songs - Kids Songs"
+    "id": "zBnA0y8f0yQ",
+    "title": "【 佳佳老師說故事 】EP236《 誠實的樵夫 》｜兒童故事繪本｜幼兒睡前故事",
+    "channelId": "UCgoiUg4LrO28_S0tBafdpcg",
+    "channel": "佳佳老師說故事"
   },
   {
-    "id": "LLgTFZP3IQQ",
-    "title": "Top 20 Back To School Songs | 🍎 📚 Learn and Sing ABCs + More! | Super Simple’s 20th Anniversary!",
-    "channelId": "UCLsooMJoIpl_7ux2jvdPB-Q",
-    "channel": "Super Simple Songs - Kids Songs"
+    "id": "bCKFAMNbXiU",
+    "title": "【 佳佳老師說故事 】EP235《 卡皮巴拉不生氣 》｜兒童故事繪本｜幼兒睡前故事",
+    "channelId": "UCgoiUg4LrO28_S0tBafdpcg",
+    "channel": "佳佳老師說故事"
   },
   {
-    "id": "YaFSwBg1qvg",
-    "title": "Put on Your Shoes | Featuring Tobee and the Super Simple Puppets! | Super Simple Songs",
-    "channelId": "UCLsooMJoIpl_7ux2jvdPB-Q",
-    "channel": "Super Simple Songs - Kids Songs"
+    "id": "fbsUpleQ4i8",
+    "title": "【 佳佳老師說故事 】EP234《 壞蛋鄰居來了? 》｜兒童故事繪本｜幼兒睡前故事",
+    "channelId": "UCgoiUg4LrO28_S0tBafdpcg",
+    "channel": "佳佳老師說故事"
   },
   {
-    "id": "BG8HLIvuK24",
-    "title": "Top 20 Counting Songs | Numbers Practice for Preschool + Up | 20th Anniversary of Super Simple Songs",
-    "channelId": "UCLsooMJoIpl_7ux2jvdPB-Q",
-    "channel": "Super Simple Songs - Kids Songs"
+    "id": "L7rLcGAFPno",
+    "title": "【 佳佳老師說故事 】EP233《 狡兔三窟 》｜兒童故事繪本｜幼兒睡前故事",
+    "channelId": "UCgoiUg4LrO28_S0tBafdpcg",
+    "channel": "佳佳老師說故事"
   },
   {
-    "id": "-HOQGg7uuQQ",
-    "title": "Counting Up To 20 | Sea Animals Kids Math Song with @NoodleAndPals | Super Simple Songs",
-    "channelId": "UCLsooMJoIpl_7ux2jvdPB-Q",
-    "channel": "Super Simple Songs - Kids Songs"
+    "id": "lnVnHJBj0_I",
+    "title": "【 佳佳老師說故事 】EP232《 狼和烏龜 》｜兒童故事繪本｜幼兒睡前故事",
+    "channelId": "UCgoiUg4LrO28_S0tBafdpcg",
+    "channel": "佳佳老師說故事"
   },
   {
-    "id": "jZnBNf0GJyU",
-    "title": "Top 20 Book Songs 📚 | Super Simple’s 20th Anniversary! | Let's Read!",
-    "channelId": "UCLsooMJoIpl_7ux2jvdPB-Q",
-    "channel": "Super Simple Songs - Kids Songs"
+    "id": "4-uqA20V4WA",
+    "title": "【 佳佳老師說故事 】EP231《 羊和烏鴉 》｜兒童故事繪本｜幼兒睡前故事",
+    "channelId": "UCgoiUg4LrO28_S0tBafdpcg",
+    "channel": "佳佳老師說故事"
   },
   {
-    "id": "wtX9hMdLuew",
-    "title": "I'm Going On A Trip | 🗺️ 🎒 Pack your bag for your adventure! | Super Simple Songs",
-    "channelId": "UCLsooMJoIpl_7ux2jvdPB-Q",
-    "channel": "Super Simple Songs - Kids Songs"
+    "id": "O3XCneBZGK8",
+    "title": "【 佳佳老師說故事 】EP230《 誰也不讓誰 》｜兒童故事繪本｜幼兒睡前故事",
+    "channelId": "UCgoiUg4LrO28_S0tBafdpcg",
+    "channel": "佳佳老師說故事"
   },
   {
-    "id": "q1DinydBRNE",
-    "title": "Top 20 Summer Songs 🌞 | Best of Super Simple Hits of 2026!",
-    "channelId": "UCLsooMJoIpl_7ux2jvdPB-Q",
-    "channel": "Super Simple Songs - Kids Songs"
+    "id": "PUdA69AILVo",
+    "title": "MINISODES + FULL EPS | Detective Browny Bear is on the HUNT!💙🫆🕵️‍♀️  | Bluey",
+    "channelId": "UCVzLLZkDuFGAE2BGdBuBNBg",
+    "channel": "Bluey - Official Channel"
   },
   {
-    "id": "hDqWTltrGJ8",
-    "title": "Shapes I See At The Beach 🏖️ | Oval, Star, Rectangle | Super Simple Songs",
-    "channelId": "UCLsooMJoIpl_7ux2jvdPB-Q",
-    "channel": "Super Simple Songs - Kids Songs"
+    "id": "IRDFYqmpJkM",
+    "title": "2 HOURS of FULL EPISODES 👵 💙 | Let's Pretend to be Grannies 🤣 | Bluey",
+    "channelId": "UCVzLLZkDuFGAE2BGdBuBNBg",
+    "channel": "Bluey - Official Channel"
   },
   {
     "id": "7O9Z7QuSKXc",
@@ -371,105 +493,273 @@ window.DEMO_VIDEOS = [
     "channel": "Bluey - Official Channel"
   },
   {
-    "id": "QM1QzF_E8Sg",
-    "title": "Let's Play…Bus 🚌 💙 | Bluey and Bingo Playtime | Bluey",
-    "channelId": "UCVzLLZkDuFGAE2BGdBuBNBg",
-    "channel": "Bluey - Official Channel"
+    "id": "4z0jCz7e_s4",
+    "title": "Spooky Cartoons for a Halloween Night | Halloween Math for Kids Compilation | Numberblocks",
+    "channelId": "UCPlwvN0w4qFSP1FllALB92w",
+    "channel": "Numberblocks"
   },
   {
-    "id": "59eVyyC0FX0",
-    "title": "Bluey and Bingo Have Magic Powers! 🪄🔮 | Magic + MORE! ✨ | Bluey",
-    "channelId": "UCVzLLZkDuFGAE2BGdBuBNBg",
-    "channel": "Bluey - Official Channel"
+    "id": "T-C1wF41baU",
+    "title": "Halloween Holiday Homework Help | Halloween Math for Kids Compilation | Numberblocks",
+    "channelId": "UCPlwvN0w4qFSP1FllALB92w",
+    "channel": "Numberblocks"
   },
   {
-    "id": "caytcwpOEgE",
-    "title": "Sesame Street Season 57 | New Episodes November 23 on Netflix and PBS Kids",
-    "channelId": "UCoookXUzPciGrEZEXmh4Jjg",
-    "channel": "Sesame Street"
+    "id": "tMMhXM7JG0Q",
+    "title": "A Double Trouble Day | Halloween Math for Kids Compilation | Numberblocks",
+    "channelId": "UCPlwvN0w4qFSP1FllALB92w",
+    "channel": "Numberblocks"
   },
   {
-    "id": "E6lZphlPfJ4",
-    "title": "Elmo and his Bug Friends! 🐛 🦋 🐝| FOUR Sesame Street Full Episodes",
-    "channelId": "UCoookXUzPciGrEZEXmh4Jjg",
-    "channel": "Sesame Street"
+    "id": "5j7csdkFnN0",
+    "title": "The Spooky Sevens! | Halloween Math for Kids Compilation | Numberblocks",
+    "channelId": "UCPlwvN0w4qFSP1FllALB92w",
+    "channel": "Numberblocks"
   },
   {
-    "id": "LfJpqzOOPUY",
-    "title": "Pumpkin Songs with Elmo & Friends! 🎃 🎃 | 20 Mins | Sesame Street",
-    "channelId": "UCoookXUzPciGrEZEXmh4Jjg",
-    "channel": "Sesame Street"
+    "id": "6PIMATLRo_U",
+    "title": "Learn How to Tell the Time! | Learn to Count for Kids Compilation | Number Cartoon | Numberblocks",
+    "channelId": "UCPlwvN0w4qFSP1FllALB92w",
+    "channel": "Numberblocks"
   },
   {
-    "id": "L_Few-yESmo",
-    "title": "Halloween Costume Ideas with Elmo, Cookie Monster, and Abby! 👻 🦇  | 50 Mins | Sesame Street",
-    "channelId": "UCoookXUzPciGrEZEXmh4Jjg",
-    "channel": "Sesame Street"
+    "id": "iWn4EUZ3tLM",
+    "title": "Captain Hex Beards Return! | Halloween Math for Kids Compilation | Numberblocks",
+    "channelId": "UCPlwvN0w4qFSP1FllALB92w",
+    "channel": "Numberblocks"
   },
   {
-    "id": "sPrUy1Ya50U",
-    "title": "Elmo & Abby Costumes! 🧑‍⚕️🧑‍🚀🦸‍♀️| FOUR Sesame Street Full Episodes",
-    "channelId": "UCoookXUzPciGrEZEXmh4Jjg",
-    "channel": "Sesame Street"
+    "id": "I4-m-mtNeuw",
+    "title": "A Guide to Fractions | Learn Early Maths Skills for Kids | Numberblocks",
+    "channelId": "UCPlwvN0w4qFSP1FllALB92w",
+    "channel": "Numberblocks"
   },
   {
-    "id": "HjFCSAFm4r4",
-    "title": "Elmo Makes a Bat House with Cookie Monster and The Count! 🦇 | Sesame Street & LEGO Little Ones",
-    "channelId": "UCoookXUzPciGrEZEXmh4Jjg",
-    "channel": "Sesame Street"
+    "id": "Jk9hlntqsWA",
+    "title": "Aliens? In Numberland? | Halloween Math for Kids Compilation | Numberblocks",
+    "channelId": "UCPlwvN0w4qFSP1FllALB92w",
+    "channel": "Numberblocks"
   },
   {
-    "id": "aVbmOHHHlC8",
-    "title": "Let's Play Sesame Street: Friends and Fun Game with Elmo, Cookie Monster & More! 😃",
-    "channelId": "UCoookXUzPciGrEZEXmh4Jjg",
-    "channel": "Sesame Street"
+    "id": "4PCLWIc9OYM",
+    "title": "Numberblock One's Spooky Counting Adventure! | Spooky Number Cartoon Compilation | Numberblocks",
+    "channelId": "UCPlwvN0w4qFSP1FllALB92w",
+    "channel": "Numberblocks"
   },
   {
-    "id": "boR8mKhXJuI",
-    "title": "Celebrate Halloween on Sesame Street! 🎃| FOUR Sesame Street Full Episodes",
-    "channelId": "UCoookXUzPciGrEZEXmh4Jjg",
-    "channel": "Sesame Street"
+    "id": "nkYJhtF3trc",
+    "title": "Struggling with Math? Start Here! | Learn to Count for Kids | Number Cartoon | Numberblocks",
+    "channelId": "UCPlwvN0w4qFSP1FllALB92w",
+    "channel": "Numberblocks"
   },
   {
-    "id": "KzwKQK_znZg",
-    "title": "Monster on the Street: Nursery Rhyme Karaoke with Elmo & Grover 🎤  | Sesame Street Songs 🎵",
-    "channelId": "UCoookXUzPciGrEZEXmh4Jjg",
-    "channel": "Sesame Street"
+    "id": "bvdQr1rUPZI",
+    "title": "My First Numbers | 12345 | Learn Maths for Kids | Numberblocks",
+    "channelId": "UCPlwvN0w4qFSP1FllALB92w",
+    "channel": "Numberblocks"
   },
   {
-    "id": "ZEuzViYEC0s",
-    "title": "Elmo's Halloween Festival! 🎃 🦇  | 2 HOURS | Sesame Street",
-    "channelId": "UCoookXUzPciGrEZEXmh4Jjg",
-    "channel": "Sesame Street"
+    "id": "lRe36GiOEdU",
+    "title": "Octoblock 8 Saves the Day! | Learn to Count for Kids Compilation | Number Cartoon | Numberblocks",
+    "channelId": "UCPlwvN0w4qFSP1FllALB92w",
+    "channel": "Numberblocks"
   },
   {
-    "id": "typhnoiFdgE",
-    "title": "Solve Mysteries with Elmo & Abby! 🔍  | FOUR Sesame Street Full Episodes",
-    "channelId": "UCoookXUzPciGrEZEXmh4Jjg",
-    "channel": "Sesame Street"
+    "id": "YrvGlFtIp4k",
+    "title": "Numbers Don't Have to be Scary | Learn to Count for Kids Compilation | Number Cartoon | Numberblocks",
+    "channelId": "UCPlwvN0w4qFSP1FllALB92w",
+    "channel": "Numberblocks"
   },
   {
-    "id": "l9OM8aEfuoQ",
-    "title": "Get Ready to Go Song with Elmo & the Cat in the Hat  👕 👖 | Sesame Street Songs 🎵",
-    "channelId": "UCoookXUzPciGrEZEXmh4Jjg",
-    "channel": "Sesame Street"
+    "id": "pqQTXA5mmao",
+    "title": "The Wrong Number and Other Spooky Stories | Learn to Count for Kids Compilation | Numberblocks",
+    "channelId": "UCPlwvN0w4qFSP1FllALB92w",
+    "channel": "Numberblocks"
   },
   {
-    "id": "IKZYdLG87zU",
-    "title": "Let's Play Sesame Street Games with Elmo and Friends! 🤩 | 35 Mins | Sesame Street",
-    "channelId": "UCoookXUzPciGrEZEXmh4Jjg",
-    "channel": "Sesame Street"
+    "id": "OdNkLG3k33s",
+    "title": "I’m a Number Detective | Learn to Count | Numberblocks",
+    "channelId": "UCPlwvN0w4qFSP1FllALB92w",
+    "channel": "Numberblocks"
   },
   {
-    "id": "BxdnuLKCDbs",
-    "title": "Storm on Sesame Street ⛈️ | Full Special",
-    "channelId": "UCoookXUzPciGrEZEXmh4Jjg",
-    "channel": "Sesame Street"
+    "id": "4VinwOQkHGg",
+    "title": "The Yuckiest Animals | SciShow Kids Compilation",
+    "channelId": "UCRFIPG2u1DxKLNuE3y2SjHA",
+    "channel": "SciShow Kids"
   },
   {
-    "id": "RgLsdBgJqbQ",
-    "title": "Let's Find Shapes with Elmo! 🔴 🟦 ⭐  | 60 Mins | Sesame Street",
-    "channelId": "UCoookXUzPciGrEZEXmh4Jjg",
-    "channel": "Sesame Street"
+    "id": "WX_E1CAZjaQ",
+    "title": "KABOOM! All About Volcanoes! | SciShow Kids Compilation",
+    "channelId": "UCRFIPG2u1DxKLNuE3y2SjHA",
+    "channel": "SciShow Kids"
+  },
+  {
+    "id": "0jKoOUZ1GBM",
+    "title": "Every Kind of Volcano | SciShow Kids",
+    "channelId": "UCRFIPG2u1DxKLNuE3y2SjHA",
+    "channel": "SciShow Kids"
+  },
+  {
+    "id": "8qdYCpSW2eY",
+    "title": "The Biggest Volcano Ever is in Space! | SciShow Kids",
+    "channelId": "UCRFIPG2u1DxKLNuE3y2SjHA",
+    "channel": "SciShow Kids"
+  },
+  {
+    "id": "YR4wtGWK7eE",
+    "title": "Hawai’i: Land of Volcanoes | SciShow Kids",
+    "channelId": "UCRFIPG2u1DxKLNuE3y2SjHA",
+    "channel": "SciShow Kids"
+  },
+  {
+    "id": "RvRU_4XWPlw",
+    "title": "Solving Problems Around the Fort! | SciShow Kids",
+    "channelId": "UCRFIPG2u1DxKLNuE3y2SjHA",
+    "channel": "SciShow Kids"
+  },
+  {
+    "id": "v8cDsAf0nN0",
+    "title": "Squeaks' Adventure Around The World! | SciShow Kids",
+    "channelId": "UCRFIPG2u1DxKLNuE3y2SjHA",
+    "channel": "SciShow Kids"
+  },
+  {
+    "id": "kKqd0_cydZM",
+    "title": "Iceland: A Land of Ice AND Fire! | SciShow Kids",
+    "channelId": "UCRFIPG2u1DxKLNuE3y2SjHA",
+    "channel": "SciShow Kids"
+  },
+  {
+    "id": "HhXnRfyUbeQ",
+    "title": "The Fiordlands of New Zealand! | SciShow Kids",
+    "channelId": "UCRFIPG2u1DxKLNuE3y2SjHA",
+    "channel": "SciShow Kids"
+  },
+  {
+    "id": "0U4lOGo593k",
+    "title": "Yellowstone: The World’s First National Park! | SciShow Kids",
+    "channelId": "UCRFIPG2u1DxKLNuE3y2SjHA",
+    "channel": "SciShow Kids"
+  },
+  {
+    "id": "annJ7XUxMjk",
+    "title": "Going to the Doctor! | SciShow Kids Compilation",
+    "channelId": "UCRFIPG2u1DxKLNuE3y2SjHA",
+    "channel": "SciShow Kids"
+  },
+  {
+    "id": "XtSq1wcFSEI",
+    "title": "Your Body's Senses | SciShow Kids Compilation",
+    "channelId": "UCRFIPG2u1DxKLNuE3y2SjHA",
+    "channel": "SciShow Kids"
+  },
+  {
+    "id": "vKxpbmdPSyk",
+    "title": "Senses You Didn’t Know You Have | SciShow Kids",
+    "channelId": "UCRFIPG2u1DxKLNuE3y2SjHA",
+    "channel": "SciShow Kids"
+  },
+  {
+    "id": "6WNHyAXIN8c",
+    "title": "How Ears Let Us Hear the World! | SciShow Kids",
+    "channelId": "UCRFIPG2u1DxKLNuE3y2SjHA",
+    "channel": "SciShow Kids"
+  },
+  {
+    "id": "r2xP7heE0wk",
+    "title": "How Eyes Let Us See The World | SciShow Kids",
+    "channelId": "UCRFIPG2u1DxKLNuE3y2SjHA",
+    "channel": "SciShow Kids"
+  },
+  {
+    "id": "a7sdBMDOOck",
+    "title": "Rosie's Rules FULL EPISODE | The Legend of Captain Spooky Beard / Crystal's Haunted House | PBS KIDS",
+    "channelId": "UCrNnk0wFBnCS1awGjq_ijGQ",
+    "channel": "PBS KIDS"
+  },
+  {
+    "id": "BJtH6atPGm0",
+    "title": "Clifford the Big Red Dog SONG | Very Very Not-Too-Scary Halloween Night! 🎃 | PBS KIDS",
+    "channelId": "UCrNnk0wFBnCS1awGjq_ijGQ",
+    "channel": "PBS KIDS"
+  },
+  {
+    "id": "YqA_oeN3jis",
+    "title": "Odd Squad FULL EPISODE | The Other Orly / Train of Fools 🚂 | PBS KIDS",
+    "channelId": "UCrNnk0wFBnCS1awGjq_ijGQ",
+    "channel": "PBS KIDS"
+  },
+  {
+    "id": "rzKqha-ADPQ",
+    "title": "Sesame Street FULL EPISODE | Kitty Kindness 🐈 | PBS KIDS",
+    "channelId": "UCrNnk0wFBnCS1awGjq_ijGQ",
+    "channel": "PBS KIDS"
+  },
+  {
+    "id": "ehyiC9cCrL0",
+    "title": "Double O Trouble, Part 1 & 2 (ASL)",
+    "channelId": "UCrNnk0wFBnCS1awGjq_ijGQ",
+    "channel": "PBS KIDS"
+  },
+  {
+    "id": "D6Y8FNsvwf0",
+    "title": "Curious George: A Halloween Boo Fest 🎃 FULL MOVIE | PBS KIDS",
+    "channelId": "UCrNnk0wFBnCS1awGjq_ijGQ",
+    "channel": "PBS KIDS"
+  },
+  {
+    "id": "3xzML2O18qk",
+    "title": "Super Why's Comic Book Adventures NEW SHOW COMPILATION | Alpha Pig Full Episodes! 🦸📚 | PBS KIDS",
+    "channelId": "UCrNnk0wFBnCS1awGjq_ijGQ",
+    "channel": "PBS KIDS"
+  },
+  {
+    "id": "y1ne7mPqSMo",
+    "title": "Super Why's Comic Book Adventures THEME SONG | PBS KIDS",
+    "channelId": "UCrNnk0wFBnCS1awGjq_ijGQ",
+    "channel": "PBS KIDS"
+  },
+  {
+    "id": "YiUPaJiI1BY",
+    "title": "Clifford the Big Red Dog FULL EPISODE | Things That Go Bump / Sherlock Bones 👻 👀 | PBS KIDS",
+    "channelId": "UCrNnk0wFBnCS1awGjq_ijGQ",
+    "channel": "PBS KIDS"
+  },
+  {
+    "id": "2eg5CkfK8s8",
+    "title": "Carl the Collector | Say It With Kindness ♥️ | PBS KIDS",
+    "channelId": "UCrNnk0wFBnCS1awGjq_ijGQ",
+    "channel": "PBS KIDS"
+  },
+  {
+    "id": "3rtYYZgqn0c",
+    "title": "Xavier Riddle and the Secret Museum FULL EPISODE | I am Mary Shelley 🎃 | PBS KIDS",
+    "channelId": "UCrNnk0wFBnCS1awGjq_ijGQ",
+    "channel": "PBS KIDS"
+  },
+  {
+    "id": "J6NCneLtMgg",
+    "title": "Clifford the Big Red Dog FULL EP | The Halloween Costume Crisis / Clifford's Howl-o-ween! | PBS KIDS",
+    "channelId": "UCrNnk0wFBnCS1awGjq_ijGQ",
+    "channel": "PBS KIDS"
+  },
+  {
+    "id": "7SNAEQVbnPM",
+    "title": "Elinor Wonders Why FULL EPISODE | The Festival of the Moon 🌙 | PBS KIDS",
+    "channelId": "UCrNnk0wFBnCS1awGjq_ijGQ",
+    "channel": "PBS KIDS"
+  },
+  {
+    "id": "0DbYdEhH74Q",
+    "title": "Carl the Collector FULL EPISODE | Whole Lotta Lotta / Leaf It To Carl 🎧📚 | PBS KIDS",
+    "channelId": "UCrNnk0wFBnCS1awGjq_ijGQ",
+    "channel": "PBS KIDS"
+  },
+  {
+    "id": "Jrk15OPnyHY",
+    "title": "Let's Go Luna! COMPILATION | Hispanic and Latino Heritage Month Folktales 🪇💃 | PBS KIDS",
+    "channelId": "UCrNnk0wFBnCS1awGjq_ijGQ",
+    "channel": "PBS KIDS"
   }
 ];
